@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Control de Accesos</title>
+
+<style>
+
+body{
+    background:#f2f2f2;
+    font-family:Arial, sans-serif;
+    padding:20px;
+}
+
+.card{
+    background:white;
+    max-width:700px;
+    margin:auto;
+    border-radius:15px;
+    padding:25px;
+    box-shadow:0px 0px 15px rgba(0,0,0,0.15);
+}
+
+.foto{
+    width:180px;
+    height:180px;
+    object-fit:cover;
+    border-radius:12px;
+    border:3px solid #ddd;
+}
+
+.activo{
+    background:#28a745;
+    color:white;
+    padding:10px;
+    border-radius:8px;
+    display:inline-block;
+    font-weight:bold;
+}
+
+.error{
+    color:red;
+    font-weight:bold;
+}
+
+label{
+    font-weight:bold;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>Control de Accesos</h1>
+
+<div id="resultado"></div>
+
+</div>
+
+<script>
+
+const empleados = {
+
+F001:{
+nombre:"Juan Perez",
+puesto:"Analista",
+correo:"juan.perez@empresa.com",
+contacto:"5551001001",
+site:"NLD-SITE01",
+laptop:"LAP-001",
+celular:"CEL-001",
+otros:"Prueba",
+estado:"Activo"
+},
+
+F002:{
+nombre:"Maria Lopez",
+puesto:"Supervisor",
+correo:"maria.lopez@empresa.com",
+contacto:"5551001002",
+site:"NLD-SITE02",
+laptop:"LAP-002",
+celular:"CEL-002",
+otros:"Prueba",
+estado:"Activo"
+},
+
+F003:{
+nombre:"Carlos Ruiz",
+puesto:"Ingeniero",
+correo:"carlos.ruiz@empresa.com",
+contacto:"5551001003",
+site:"MTY-SITE01",
+laptop:"LAP-003",
+celular:"CEL-003",
+otros:"Acceso VPN",
+estado:"Activo"
+}
+
+};
+
+window.onload = function(){
+
+const resultado =
+document.getElementById("resultado");
+
+const parametros =
+new URLSearchParams(window.location.search);
+
+const folio =
+parametros.get("id");
+
+if(!folio){
+
+resultado.innerHTML =
+"<h2 class='error'>No se especificó un folio</h2>";
+
+return;
+
+}
+
+if(!empleados[folio]){
+
+resultado.innerHTML =
+"<h2 class='error'>Empleado no encontrado</h2>";
+
+return;
+
+}
+
+const emp = empleados[folio];
+
+resultado.innerHTML = `
+
+<center>
+
+<img
+class="foto"
+src="fotos/${folio}.png">
+
+<h2>${emp.nombre}</h2>
+
+<h3>${emp.puesto}</h3>
+
+<div class="activo">
+🟢 ${emp.estado}
+</div>
+
+</center>
+
+<hr>
+
+<p><label>Folio:</label> ${folio}</p>
+
+<p><label>Correo:</label> ${emp.correo}</p>
+
+<p><label>Contacto:</label> ${emp.contacto}</p>
+
+<p><label>Site:</label> ${emp.site}</p>
+
+<hr>
+
+<h3>Equipos Asignados</h3>
+
+<p><label>Laptop:</label> ${emp.laptop}</p>
+
+<p><label>Celular:</label> ${emp.celular}</p>
+
+<p><label>Otros:</label> ${emp.otros}</p>
+
+`;
+
+};
+
+</script>
+
+</body>
+</html>
