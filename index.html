@@ -23,6 +23,10 @@ body{
     box-shadow:0px 0px 15px rgba(0,0,0,0.15);
 }
 
+h1{
+    text-align:center;
+}
+
 .foto{
     width:250px;
     height:250px;
@@ -33,39 +37,51 @@ body{
     margin:0 auto 20px auto;
 }
 
-.activo{
+.autorizado{
     background:#28a745;
     color:white;
-    font-size:32px;
+    font-size:36px;
     font-weight:bold;
     text-align:center;
-    padding:15px;
+    padding:20px;
     border-radius:12px;
     margin:20px 0;
 }
 
-    .denegado{
+.denegado{
     background:#dc3545;
     color:white;
-    font-size:24px;
+    font-size:36px;
     font-weight:bold;
     text-align:center;
-    padding:15px;
-    border-radius:10px;
-    margin-bottom:15px;
+    padding:20px;
+    border-radius:12px;
+    margin:20px 0;
 }
 
 .restringido{
     background:#ffc107;
     color:black;
-    font-size:24px;
+    font-size:36px;
     font-weight:bold;
     text-align:center;
-    padding:15px;
-    border-radius:10px;
-    margin-bottom:15px;
+    padding:20px;
+    border-radius:12px;
+    margin:20px 0;
 }
 
+.estado{
+    background:#f5f5f5;
+    color:#28a745;
+    border:3px solid #28a745;
+    font-size:26px;
+    font-weight:bold;
+    text-align:center;
+    padding:12px;
+    border-radius:12px;
+    margin:20px auto;
+    width:220px;
+}
 
 .error{
     color:red;
@@ -76,6 +92,10 @@ label{
     font-weight:bold;
 }
 
+hr{
+    margin:25px 0;
+}
+
 </style>
 </head>
 
@@ -83,7 +103,7 @@ label{
 
 <div class="card">
 
-<h1>Control de Accesos</h1>
+<h1>CONTROL DE ACCESOS</h1>
 
 <div id="resultado"></div>
 
@@ -113,70 +133,64 @@ window.onload = async function(){
         if(!folio){
 
             resultado.innerHTML = `
-            <h2 style="color:red;">
+            <h2 class="error">
             No se especificó un folio
             </h2>
             `;
-
             return;
+
         }
 
         if(!empleados[folio]){
 
             resultado.innerHTML = `
-            <h2 style="color:red;">
+            <h2 class="error">
             Empleado no encontrado
             </h2>
             `;
-
             return;
+
         }
 
         const emp =
         empleados[folio];
 
-        let colorClase = "activo";
-let mensajeAcceso = "🟢 ACCESO AUTORIZADO";
+        let colorClase = "autorizado";
+        let mensajeAcceso = "🟢 ACCESO AUTORIZADO";
 
-if(emp.estado === "Baja"){
-    colorClase = "denegado";
-    mensajeAcceso = "🔴 ACCESO DENEGADO";
-}
+        if(emp.estado === "Baja"){
 
-if(emp.estado === "Suspendido"){
-    colorClase = "restringido";
-    mensajeAcceso = "🟡 ACCESO RESTRINGIDO";
-}
+            colorClase = "denegado";
+            mensajeAcceso = "🔴 ACCESO DENEGADO";
+
+        }
+
+        if(emp.estado === "Suspendido"){
+
+            colorClase = "restringido";
+            mensajeAcceso = "🟡 ACCESO RESTRINGIDO";
+
+        }
 
         resultado.innerHTML = `
-            <center>
 
-<img
-class="foto"
-src="fotos/${folio}.png"
-onerror="this.src='https://via.placeholder.com/180?text=Sin+Foto'">
+        <center>
 
-<br><br>
+            <img
+            class="foto"
+            src="fotos/${folio}.png"
+            onerror="this.src='https://via.placeholder.com/250?text=Sin+Foto'">
 
-<div class="${colorClase}">
-${mensajeAcceso}
-</div>
-
-<h2>${emp.nombre}</h2>
-
-<h3>${emp.puesto}</h3>
-
-<div class="activo">
-${emp.estado}
-</div>
-
+            <div class="${colorClase}">
+            ${mensajeAcceso}
+            </div>
 
             <h2>${emp.nombre}</h2>
 
             <h3>${emp.puesto}</h3>
 
-            <div class="${colorClase}">
-                ${emp.estado}
+            <div class="estado">
+            ${emp.estado}
             </div>
 
         </center>
@@ -185,13 +199,11 @@ ${emp.estado}
 
         <p><label>Folio:</label> ${folio}</p>
 
-       
-
         <p><label>Site:</label> ${emp.site}</p>
 
         <hr>
 
-        <h3>Equipos Asignados</h3>
+        <h2>Equipos Asignados</h2>
 
         <p><label>Laptop:</label> ${emp.laptop}</p>
 
@@ -205,13 +217,11 @@ ${emp.estado}
     catch(error){
 
         resultado.innerHTML = `
-
-        <h2 style="color:red;">
+        <h2 class="error">
         Error cargando empleados.json
         </h2>
 
         <p>${error}</p>
-
         `;
 
         console.error(error);
