@@ -39,6 +39,28 @@ body{
     display:inline-block;
     font-weight:bold;
 }
+    .denegado{
+    background:#dc3545;
+    color:white;
+    font-size:24px;
+    font-weight:bold;
+    text-align:center;
+    padding:15px;
+    border-radius:10px;
+    margin-bottom:15px;
+}
+
+.restringido{
+    background:#ffc107;
+    color:black;
+    font-size:24px;
+    font-weight:bold;
+    text-align:center;
+    padding:15px;
+    border-radius:10px;
+    margin-bottom:15px;
+}
+
 
 .error{
     color:red;
@@ -108,14 +130,27 @@ window.onload = async function(){
         const emp =
         empleados[folio];
 
-        const colorClase =
-        emp.estado === "Activo"
-        ? "activo"
-        : "inactivo";
+        let colorClase = "activo";
+let mensajeAcceso = "🟢 ACCESO AUTORIZADO";
+
+if(emp.estado === "Baja"){
+    colorClase = "denegado";
+    mensajeAcceso = "🔴 ACCESO DENEGADO";
+}
+
+if(emp.estado === "Suspendido"){
+    colorClase = "restringido";
+    mensajeAcceso = "🟡 ACCESO RESTRINGIDO";
+}
 
         resultado.innerHTML = `
 
         <center>
+
+        <div class="${colorClase}">
+${mensajeAcceso}
+</div>
+
 
             <img
             class="foto"
