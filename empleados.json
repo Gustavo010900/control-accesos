@@ -1,0 +1,37 @@
+{
+  "F001": {
+    "nombre": "Juan Perez",
+    "puesto": "Analista",
+    "correo": "juan.perez@empresa.com",
+    "contacto": "5551001001",
+    "site": "NLD-SITE01",
+    "laptop": "LAP-001",
+    "celular": "CEL-001",
+    "otros": "Prueba",
+    "estado": "Activo"
+  },
+
+  "F002": {
+    "nombre": "Maria Lopez",
+    "puesto": "Supervisor",
+    "correo": "maria.lopez@empresa.com",
+    "contacto": "5551001002",
+    "site": "NLD-SITE02",
+    "laptop": "LAP-002",
+    "celular": "CEL-002",
+    "otros": "Prueba",
+    "estado": "Activo"
+  },
+
+  "F003": {
+    "nombre": "Carlos Ruiz",
+    "puesto": "Ingeniero",
+    "correo": "carlos.ruiz@empresa.com",
+    "contacto": "5551001003",
+    "site": "MTY-SITE01",
+    "laptop": "LAP-003",
+    "celular": "CEL-003",
+    "otros": "Acceso VPN",
+    "estado": "Activo"
+  }
+}
