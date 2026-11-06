@@ -66,107 +66,110 @@ label{
 
 window.onload = async function(){
 
-const resultado =
-document.getElementById("resultado");
+    const resultado =
+    document.getElementById("resultado");
 
-try{
+    try{
 
-const respuesta =
-await fetch("empleados.json");
+        const respuesta =
+        await fetch("empleados.json?v=" + new Date().getTime());
 
-const parametros =
-new URLSearchParams(window.location.search);
+        const empleados =
+        await respuesta.json();
 
-const folio =
-parametros.get("id");
+        const parametros =
+        new URLSearchParams(window.location.search);
 
-if(!folio){
+        const folio =
+        parametros.get("id");
 
-resultado.innerHTML = `
-<h2 style="color:red;">
-No se especificó un folio
-</h2>
-`;
+        if(!folio){
 
-return;
-}
+            resultado.innerHTML = `
+            <h2 style="color:red;">
+            No se especificó un folio
+            </h2>
+            `;
 
-if(!empleados[folio]){
+            return;
+        }
 
-resultado.innerHTML = `
-<h2 style="color:red;">
-Empleado no encontrado
-</h2>
-`;
+        if(!empleados[folio]){
 
-return;
-}
+            resultado.innerHTML = `
+            <h2 style="color:red;">
+            Empleado no encontrado
+            </h2>
+            `;
 
-const emp =
-empleados[folio];
+            return;
+        }
 
-const colorClase =
-emp.estado === "Activo"
-? "activo"
-: "inactivo";
+        const emp =
+        empleados[folio];
 
-resultado.innerHTML = `
+        const colorClase =
+        emp.estado === "Activo"
+        ? "activo"
+        : "inactivo";
 
-<center>
+        resultado.innerHTML = `
 
-<img
-class="foto"
-src="fotos/${folio}.png"
-onerror="this.src='https://via.placeholder.com/180?text=Sin+Foto'">
+        <center>
 
-<h2>${emp.nombre}</h2>
+            <img
+            class="foto"
+            src="fotos/${folio}.png"
+            onerror="this.src='https://via.placeholder.com/180?text=Sin+Foto'">
 
-<h3>${emp.puesto}</h3>
+            <h2>${emp.nombre}</h2>
 
-<div class="${colorClase}">
-${emp.estado}
-</div>
+            <h3>${emp.puesto}</h3>
 
-</center>
+            <div class="${colorClase}">
+                ${emp.estado}
+            </div>
 
-<hr>
+        </center>
 
-<p><label>Folio:</label> ${folio}</p>
+        <hr>
 
-<p><label>Correo:</label> ${emp.correo}</p>
+        <p><label>Folio:</label> ${folio}</p>
 
-<p><label>Contacto:</label> ${emp.contacto}</p>
+        <p><label>Correo:</label> ${emp.correo}</p>
 
-<p><label>Site:</label> ${emp.site}</p>
+        <p><label>Contacto:</label> ${emp.contacto}</p>
 
-<hr>
+        <p><label>Site:</label> ${emp.site}</p>
 
-<h3>Equipos Asignados</h3>
+        <hr>
 
-<p><label>Laptop:</label> ${emp.laptop}</p>
+        <h3>Equipos Asignados</h3>
 
-<p><label>Celular:</label> ${emp.celular}</p>
+        <p><label>Laptop:</label> ${emp.laptop}</p>
 
-<p><label>Otros:</label> ${emp.otros}</p>
+        <p><label>Celular:</label> ${emp.celular}</p>
 
-`;
+        <p><label>Otros:</label> ${emp.otros}</p>
 
-}
-catch(error){
+        `;
 
-resultado.innerHTML = `
+    }
+    catch(error){
 
-<h2 style="color:red;">
-Error cargando empleados.json
-</h2>
+        resultado.innerHTML = `
 
-<p>
-${error}
-</p>
+        <h2 style="color:red;">
+        Error cargando empleados.json
+        </h2>
 
-`;
+        <p>${error}</p>
 
-}
+        `;
+
+        console.error(error);
+
+    }
 
 }
 
