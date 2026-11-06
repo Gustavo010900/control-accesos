@@ -23,8 +23,21 @@ body{
     box-shadow:0px 0px 15px rgba(0,0,0,0.15);
 }
 
+.logo{
+    width:220px;
+    display:block;
+    margin:0 auto 10px auto;
+}
+
 h1{
     text-align:center;
+    margin-bottom:5px;
+}
+
+.subtitulo{
+    text-align:center;
+    color:#666;
+    margin-bottom:25px;
 }
 
 .foto{
@@ -92,6 +105,7 @@ h1{
 .error{
     color:red;
     font-weight:bold;
+    text-align:center;
 }
 
 label{
@@ -103,13 +117,23 @@ hr{
 }
 
 </style>
+
 </head>
 
 <body>
 
 <div class="card">
 
+<img
+class="logo"
+src="logo.png"
+alt="Logo">
+
 <h1>CONTROL DE ACCESOS</h1>
+
+<p class="subtitulo">
+Sistema de Control de Accesos y Activos
+</p>
 
 <div id="resultado"></div>
 
@@ -141,10 +165,8 @@ window.onload = async function(){
             resultado.innerHTML = `
             <h2 class="error">
             No se especificó un folio
-            </h2>
-            `;
+            </h2>`;
             return;
-
         }
 
         if(!empleados[folio]){
@@ -152,14 +174,11 @@ window.onload = async function(){
             resultado.innerHTML = `
             <h2 class="error">
             Empleado no encontrado
-            </h2>
-            `;
+            </h2>`;
             return;
-
         }
 
-        const emp =
-        empleados[folio];
+        const emp = empleados[folio];
 
         let colorClase = "autorizado";
         let mensajeAcceso = "🟢 ACCESO AUTORIZADO";
@@ -182,22 +201,22 @@ window.onload = async function(){
 
         <center>
 
-            <img
-            class="foto"
-            src="fotos/${folio}.png"
-            onerror="this.src='https://via.placeholder.com/250?text=Sin+Foto'">
+        <img
+        class="foto"
+        src="fotos/${folio}.png"
+        onerror="this.src='https://via.placeholder.com/250?text=Sin+Foto'">
 
-            <div class="${colorClase}">
+        <div class="${colorClase}">
             ${mensajeAcceso}
-            </div>
+        </div>
 
-            <h2>${emp.nombre}</h2>
+        <h2>${emp.nombre}</h2>
 
-            <h3>${emp.puesto}</h3>
+        <h3>${emp.puesto}</h3>
 
-            <div class="estado">
-            ${emp.estado}
-            </div>
+        <div class="estado">
+            ESTATUS: ${emp.estado}
+        </div>
 
         </center>
 
@@ -226,7 +245,6 @@ window.onload = async function(){
         <h2 class="error">
         Error cargando empleados.json
         </h2>
-
         <p>${error}</p>
         `;
 
