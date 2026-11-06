@@ -64,50 +64,18 @@ label{
 
 <script>
 
-const empleados = {
-
-F001:{
-nombre:"Juan Perez",
-puesto:"Analista",
-correo:"juan.perez@empresa.com",
-contacto:"5551001001",
-site:"NLD-SITE01",
-laptop:"LAP-001",
-celular:"CEL-001",
-otros:"Prueba",
-estado:"Activo"
-},
-
-F002:{
-nombre:"Maria Lopez",
-puesto:"Supervisor",
-correo:"maria.lopez@empresa.com",
-contacto:"5551001002",
-site:"NLD-SITE02",
-laptop:"LAP-002",
-celular:"CEL-002",
-otros:"Prueba",
-estado:"Activo"
-},
-
-F003:{
-nombre:"Carlos Ruiz",
-puesto:"Ingeniero",
-correo:"carlos.ruiz@empresa.com",
-contacto:"5551001003",
-site:"MTY-SITE01",
-laptop:"LAP-003",
-celular:"CEL-003",
-otros:"Acceso VPN",
-estado:"Activo"
-}
-
-};
-
-window.onload = function(){
+window.onload = async function(){
 
 const resultado =
 document.getElementById("resultado");
+
+try{
+
+const respuesta =
+await fetch("empleados.json");
+
+const empleados =
+await respuesta.json();
 
 const parametros =
 new URLSearchParams(window.location.search);
@@ -117,23 +85,33 @@ parametros.get("id");
 
 if(!folio){
 
-resultado.innerHTML =
-"<h2 class='error'>No se especificó un folio</h2>";
+resultado.innerHTML = `
+<h2 style="color:red;">
+No se especificó un folio
+</h2>
+`;
 
 return;
-
 }
 
 if(!empleados[folio]){
 
-resultado.innerHTML =
-"<h2 class='error'>Empleado no encontrado</h2>";
+resultado.innerHTML = `
+<h2 style="color:red;">
+Empleado no encontrado
+</h2>
+`;
 
 return;
-
 }
 
-const emp = empleados[folio];
+const emp =
+empleados[folio];
+
+const colorClase =
+emp.estado === "Activo"
+? "activo"
+: "inactivo";
 
 resultado.innerHTML = `
 
@@ -141,14 +119,15 @@ resultado.innerHTML = `
 
 <img
 class="foto"
-src="fotos/${folio}.png">
+src="fotos/${folio}.png"
+onerror="this.src='https://via.placeholder.com/180?text=Sin+Foto'">
 
 <h2>${emp.nombre}</h2>
 
 <h3>${emp.puesto}</h3>
 
-<div class="activo">
-🟢 ${emp.estado}
+<div class="${colorClase}">
+${emp.estado}
 </div>
 
 </center>
@@ -175,7 +154,24 @@ src="fotos/${folio}.png">
 
 `;
 
-};
+}
+catch(error){
+
+resultado.innerHTML = `
+
+<h2 style="color:red;">
+Error cargando empleados.json
+</h2>
+
+<p>
+${error}
+</p>
+
+`;
+
+}
+
+}
 
 </script>
 
