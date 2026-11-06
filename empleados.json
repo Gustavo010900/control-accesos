@@ -1,13 +1,13 @@
 {
   "F001": {
-    "nombre": "Juan Perez",
-    "puesto": "Analista",
-    "correo": "juan.perez@empresa.com",
-    "contacto": "5551001001",
-    "site": "NLD-SITE01",
-    "laptop": "LAP-001",
-    "celular": "CEL-001",
-    "otros": "Prueba",
+    "nombre": "Gustavo Reyes Tenorio",
+    "puesto": "Ingeniero de Sistemas IT",
+    "correo": "gusr723@kellyservices.com",
+    "contacto": "2211082985",
+    "site": "  TEPO 1",
+    "laptop": "LAPTOP DELL-001",
+    "celular": "CELULAR MOTOROLA-001",
+    "otros": "AUDIFONOS SAMSUNG",
     "estado": "Activo"
   },
 
