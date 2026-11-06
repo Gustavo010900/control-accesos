@@ -24,6 +24,14 @@ body{
     box-shadow:0px 0px 15px rgba(0,0,0,.15);
 }
 
+.info-card{
+    background:#f5f9ff;
+    border-left:5px solid #003A70;
+    padding:12px;
+    border-radius:8px;
+    margin-bottom:10px;
+}
+
 .header{
     background:#003A70;
     padding:15px;
@@ -270,9 +278,13 @@ window.onload = async function(){
 
         <div class="info">
 
-        <p>🪪 <label>Folio:</label> ${folio}</p>
-        
-        <p>🏢 <label>Site:</label> ${emp.site}</p>
+       <div class="info-card">
+🪪 <label>Folio:</label> ${folio}
+</div>
+
+<div class="info-card">
+🏢 <label>Site:</label> ${emp.site}
+</div>
 
         </div>
 
