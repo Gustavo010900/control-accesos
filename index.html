@@ -12,6 +12,7 @@ body{
     background:#f2f2f2;
     font-family:Arial, sans-serif;
     padding:20px;
+    margin:0;
 }
 
 .card{
@@ -20,17 +21,19 @@ body{
     margin:auto;
     border-radius:15px;
     padding:25px;
-    box-shadow:0px 0px 15px rgba(0,0,0,0.15);
+    box-shadow:0px 0px 15px rgba(0,0,0,.15);
 }
 
 .logo{
-    width:220px;
+    width:100%;
+    max-width:220px;
     display:block;
     margin:0 auto 10px auto;
 }
 
 h1{
     text-align:center;
+    font-size:clamp(32px,5vw,52px);
     margin-bottom:5px;
 }
 
@@ -41,8 +44,9 @@ h1{
 }
 
 .foto{
-    width:250px;
-    height:250px;
+    width:100%;
+    max-width:250px;
+    aspect-ratio:1/1;
     object-fit:cover;
     border-radius:15px;
     border:4px solid #ddd;
@@ -57,10 +61,11 @@ h1{
     font-size:26px;
     font-weight:bold;
     text-align:center;
-    padding:12px;
+    padding:15px;
     border-radius:12px;
     margin:20px auto;
-    width:500px;
+    width:90%;
+    max-width:500px;
 }
 
 .denegado{
@@ -70,10 +75,11 @@ h1{
     font-size:26px;
     font-weight:bold;
     text-align:center;
-    padding:12px;
+    padding:15px;
     border-radius:12px;
     margin:20px auto;
-    width:500px;
+    width:90%;
+    max-width:500px;
 }
 
 .restringido{
@@ -83,28 +89,29 @@ h1{
     font-size:26px;
     font-weight:bold;
     text-align:center;
-    padding:12px;
+    padding:15px;
     border-radius:12px;
     margin:20px auto;
-    width:500px;
+    width:90%;
+    max-width:500px;
 }
 
 .estado{
     background:#f5f5f5;
     color:#28a745;
     border:3px solid #28a745;
-    font-size:26px;
+    font-size:24px;
     font-weight:bold;
     text-align:center;
     padding:12px;
     border-radius:12px;
     margin:20px auto;
-    width:220px;
+    width:90%;
+    max-width:220px;
 }
 
 .error{
     color:red;
-    font-weight:bold;
     text-align:center;
 }
 
@@ -112,8 +119,30 @@ label{
     font-weight:bold;
 }
 
+.info{
+    text-align:center;
+}
+
 hr{
     margin:25px 0;
+}
+
+@media (max-width:600px){
+
+    .card{
+        padding:15px;
+    }
+
+    .autorizado,
+    .denegado,
+    .restringido{
+        font-size:20px;
+    }
+
+    .estado{
+        font-size:20px;
+    }
+
 }
 
 </style>
@@ -127,7 +156,7 @@ hr{
 <img
 class="logo"
 src="logo.png"
-alt="Logo">
+alt="logo">
 
 <h1>CONTROL DE ACCESOS</h1>
 
@@ -165,8 +194,11 @@ window.onload = async function(){
             resultado.innerHTML = `
             <h2 class="error">
             No se especificó un folio
-            </h2>`;
+            </h2>
+            `;
+
             return;
+
         }
 
         if(!empleados[folio]){
@@ -174,8 +206,11 @@ window.onload = async function(){
             resultado.innerHTML = `
             <h2 class="error">
             Empleado no encontrado
-            </h2>`;
+            </h2>
+            `;
+
             return;
+
         }
 
         const emp = empleados[folio];
@@ -222,9 +257,13 @@ window.onload = async function(){
 
         <hr>
 
+        <div class="info">
+
         <p><label>Folio:</label> ${folio}</p>
 
         <p><label>Site:</label> ${emp.site}</p>
+
+        </div>
 
         <hr>
 
@@ -245,6 +284,7 @@ window.onload = async function(){
         <h2 class="error">
         Error cargando empleados.json
         </h2>
+
         <p>${error}</p>
         `;
 
