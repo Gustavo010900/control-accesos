@@ -33,5 +33,101 @@
     "celular": "CEL-003",
     "otros": "Acceso VPN",
     "estado": "Activo"
-  }
+  },
+
+  "F004": {
+    "nombre": "Ana Torres",
+    "puesto": "Coordinador",
+    "correo": "ana.torres@empresa.com",
+    "contacto": "5551001004",
+    "site": "MTY-SITE02",
+    "laptop": "LAP-004",
+    "celular": "CEL-004",
+    "otros": "Prueba",
+    "estado": "Activo"
+  },
+
+  "F005": {
+    "nombre": "Luis Garcia",
+    "puesto": "Gerente",
+    "correo": "luis.garcia@empresa.com",
+    "contacto": "5551001005",
+    "site": "QRO-SITE01",
+    "laptop": "LAP-005",
+    "celular": "CEL-005",
+    "otros": "Auto asignado",
+    "estado": "Activo"
+  },
+
+  "F006": {
+    "nombre": "Sofia Martinez",
+    "puesto": "Analista",
+    "correo": "sofia.martinez@empresa.com",
+    "contacto": "5551001006",
+    "site": "QRO-SITE02",
+    "laptop": "LAP-006",
+    "celular": "CEL-006",
+    "otros": "Prueba",
+    "estado": "Activo"
+  },
+
+  "F007": {
+    "nombre": "Diego Hernandez",
+    "puesto": "Tecnico",
+    "correo": "diego.hernandez@empresa.com",
+    "contacto": "5551001007",
+    "site": "GDL-SITE01",
+    "laptop": "LAP-007",
+    "celular": "CEL-007",
+    "otros": "Monitor",
+    "estado": "Activo"
+  },
+
+  "F008": {
+    "nombre": "Fernanda Castro",
+    "puesto": "RH",
+    "correo": "fernanda.castro@empresa.com",
+    "contacto": "5551001008",
+    "site": "GDL-SITE02",
+    "laptop": "LAP-008",
+    "celular": "CEL-008",
+    "otros": "Prueba",
+    "estado": "Activo"
+  },
+
+  "F009": {
+    "nombre": "Ricardo Vega",
+    "puesto": "Compras",
+    "correo": "ricardo.vega@empresa.com",
+    "contacto": "5551001009",
+    "site": "CDMX-SITE01",
+    "laptop": "LAP-009",
+    "celular": "CEL-009",
+    "otros": "Tableta",
+    "estado": "Activo"
+  },
+
+  "F010": {
+    "nombre": "Laura Mendoza",
+    "puesto": "Finanzas",
+    "correo": "laura.mendoza@empresa.com",
+    "contacto": "5551001010",
+    "site": "CDMX-SITE02",
+    "laptop": "LAP-010",
+    "celular": "CEL-010",
+    "otros": "Prueba",
+    "estado": "Activo"
+  },
+
+    "F010": {
+    "nombre": "Laura Mendoza",
+    "puesto": "Finanzas",
+    "correo": "laura.mendoza@empresa.com",
+    "contacto": "5551001010",
+    "site": "CDMX-SITE02",
+    "laptop": "LAP-010",
+    "celular": "CEL-010",
+    "otros": "Prueba",
+    "estado": "Activo"
+    }      
 }
