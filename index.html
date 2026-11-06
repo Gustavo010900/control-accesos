@@ -24,6 +24,13 @@ body{
     box-shadow:0px 0px 15px rgba(0,0,0,.15);
 }
 
+.header{
+    background:#003A70;
+    padding:15px;
+    border-radius:12px 12px 0 0;
+    margin:-25px -25px 20px -25px;
+}
+
 .logo{
     width:100%;
     max-width:220px;
@@ -153,10 +160,14 @@ hr{
 
 <div class="card">
 
+<div class="header">
+
 <img
 class="logo"
 src="logo.png"
 alt="logo">
+
+</div>
 
 <h1>CONTROL DE ACCESOS</h1>
 
@@ -259,9 +270,9 @@ window.onload = async function(){
 
         <div class="info">
 
-        <p><label>Folio:</label> ${folio}</p>
-
-        <p><label>Site:</label> ${emp.site}</p>
+        <p>🪪 <label>Folio:</label> ${folio}</p>
+        
+        <p>🏢 <label>Site:</label> ${emp.site}</p>
 
         </div>
 
@@ -269,11 +280,11 @@ window.onload = async function(){
 
         <h2>Equipos Asignados</h2>
 
-        <p><label>Laptop:</label> ${emp.laptop}</p>
-
-        <p><label>Celular:</label> ${emp.celular}</p>
-
-        <p><label>Otros:</label> ${emp.otros}</p>
+       <p>💻 <label>Laptop:</label> ${emp.laptop}</p>
+       
+       <p>📱 <label>Celular:</label> ${emp.celular}</p>
+       
+       <p>🎧 <label>Otros:</label> ${emp.otros}</p>
 
         `;
 
